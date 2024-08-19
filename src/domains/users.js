@@ -24,16 +24,12 @@ const getUserByIdDb = async (id) => {
 			id: id,
 		},
 		include: {
-			visits: {
-				include: {
-					location: {
-						include: {
-							logs: true,
-							pictures: true,
-						},
-					},
-				},
-			},
+            visits: {
+                include: {
+                    location: {
+                        select: {name: true}
+                }}
+            },
 		},
 	})
 
@@ -49,6 +45,19 @@ const getUserByUsernameDb = async (username) => {
 	const foundUser = await prisma.user.findUnique({
 		where: {
 			username: username,
+		},
+		include: {
+			visits: {
+                include: {
+                    logEntries: true,
+                    pictures: true,
+					location: {
+						select: {
+							name: true
+						},
+					},
+				},
+			},
 		},
 	})
 	return foundUser

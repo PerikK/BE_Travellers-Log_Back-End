@@ -4,6 +4,7 @@ import {
 	createUserDb,
 	getUserByUsernameDb,
 	getAllUsersDb,
+	getUserByIdDb
 } from '../domains/users.js'
 import {
 	MissingFieldsError,
