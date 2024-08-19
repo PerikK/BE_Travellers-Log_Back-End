@@ -2,13 +2,13 @@ import { Router } from 'express'
 import {
 	createVisit,
 	getVisitsByUser,
-	// updateVisit,
+    updateVisit,
 } from '../controllers/visits.js'
 
 const visitRouter = Router()
 
 visitRouter.post('/', createVisit)
 visitRouter.get('/:id', getVisitsByUser)
-// visitRouter.patch('/:id', updateVisit)
+visitRouter.patch('/:id', updateVisit)
 
 export default visitRouter

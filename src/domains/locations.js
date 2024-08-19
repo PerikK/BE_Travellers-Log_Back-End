@@ -13,7 +13,7 @@ const createLocationDb = async (userId, name) => {
 	return newLocation
 }
 
-const getLocationByUserDb = async (userId) => {
+const getLocationsByUserDb = async (userId) => {
 	const userLocations = await prisma.location.findMany({
 		where: {
 			visits: {
@@ -22,18 +22,9 @@ const getLocationByUserDb = async (userId) => {
 				},
 			},
 		},
-		include: {
-			pictures: {
-				select: {
-					pictureUrl: true,
-					createdAt: true,
-				},
-			},
-			logs: {
-				select: {
-					logEntries: true,
-				},
-			},
+		select: {
+			createdBy: true,
+			name:true
 		},
 	})
 	return userLocations
@@ -64,6 +55,6 @@ const getAllLocationsDb = async () => {
 export {
 	createLocationDb,
 	getAllLocationsDb,
-	getLocationByUserDb,
+	getLocationsByUserDb,
 	getLocationByNameDB,
 }
