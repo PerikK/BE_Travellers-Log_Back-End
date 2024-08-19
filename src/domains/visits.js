@@ -1,4 +1,4 @@
-import prisma from '../utilities/dbClient'
+import prisma from '../utilities/dbClient.js'
 
 async function createVisitDb({
 	userId,

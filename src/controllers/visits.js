@@ -1,1 +1,1 @@
-import { createVisitDb } from "../domains/visits";
+import { createVisitDb } from "../domains/visits.js";
