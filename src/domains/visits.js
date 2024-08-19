@@ -100,13 +100,6 @@ const updateVisitDb = async (
 	newLogEntries = [],
 	newPictures = []
 ) => {
-	console.log('updateVisitDb called with:', {
-		userId,
-		visitId,
-		newLogEntries,
-		newPictures,
-	})
-
 	const updateData = {}
 
 	if (newLogEntries.length > 0) {
@@ -134,90 +127,8 @@ const updateVisitDb = async (
 		},
 	})
 
-	console.log('Updated visit:', updatedVisit)
-
 	return updatedVisit
 }
-
-// const updateVisitDb = async (
-// 	userId,
-// 	id,
-// 	newLogEntries,
-// 	newPicturess
-// ) => {
-// 	const visitToUpdate = await prisma.visit.findUnique({
-// 		where: { userId: userId, id: id },
-// 		select: {
-// 			userId: true,
-// 			locationId: true,
-// 			location: true,
-// 			createdAt: true,
-// 			updatedAt: true,
-// 		},
-// 	})
-
-// 	const updateData = {}
-
-// 	if (newLogEntries) {
-// 		console.log(newLogEntries)
-// 		console.log(newLogEntries[1])
-// 		const log = await prisma.logEntry.findFirst({
-// 			where: {
-// 				visitId: id,
-// 			},
-// 			select: {
-// 				id: true,
-// 				logText: true,
-// 			},
-// 		})
-
-// 		let logUpdateData
-// 		if (log) {
-// 			logUpdateData = {
-// 				update: {
-// 					where: { id: log.id },
-// 					data: {
-// 						logText: {
-// 							set: [...log.logEntry, logEntry],
-// 						},
-// 					},
-// 				},
-// 			}
-// 		} else {
-// 			logUpdateData = {
-// 				create: {
-// 					visitId: id,
-// 					logEntries: [logEntry],
-// 					userId: visitToUpdate.userId,
-// 					locationId: visitToUpdate.locationId,
-// 				},
-// 			}
-// 		}
-// 		updateData.logEntries = logUpdateData
-// 	}
-
-// 	if (pictureUrl) {
-// 		updateData.pictures = {
-// 			create: {
-// 				pictureUrl: [pictureUrl],
-// 				userId: visitToUpdate.userId,
-// 				locationId: visitToUpdate.locationId,
-// 			},
-// 		}
-// 	}
-
-// 	const updatedVisit = await prisma.visit.update({
-// 		where: {
-// 			id: id,
-// 		},
-// 		data: updateData,
-// 		include: {
-// 			log: true,
-// 			pictures: true,
-// 		},
-// 	})
-// 	return updatedVisit
-// }
 
 export {
 	createVisitDb,

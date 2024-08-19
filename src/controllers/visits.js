@@ -1,4 +1,3 @@
-import prisma from '../utilities/dbClient.js'
 import { getLocationByNameDB, getLocationsByUserDb } from '../domains/locations.js'
 import { getUserByIdDb } from '../domains/users.js'
 import {
