@@ -30,10 +30,8 @@ const createVisit = async (req, res) => {
 		)
 	}
 	const location = await getLocationByNameDB(locationName)
-	console.log('location in contr', location)
 	if (location) {
 		const existingVisit = await existingVisitDb(user.id, locationName)
-		console.log(existingVisit)
 		if (existingVisit) {
 			throw new ExistingDataError(
 				'This location already exists in your Travel Log. Maybe you want to update it?'
